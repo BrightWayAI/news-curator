@@ -28,11 +28,20 @@ The parent skill passes:
 
 ## Workflow
 
-1. **Read `user-context.md`.** Extract:
-   - **Voice rules** — banned phrases, tone descriptors, sentence-length preferences, hook patterns.
+1. **Read voice rules** — first check `~/Documents/Claude/voice.md` (the shared voice file populated by cortex's `/setup-voice`). If it exists, prefer those rules — they're the user's canonical voice across every drafting plugin. Then read this plugin's `user-context.md` for plugin-specific overrides (post format, hashtag preferences, audience).
+
+   Voice rules to extract (from shared voice.md if present, else from user-context.md):
+   - **Voice descriptors** — three-words + "NOT this"
+   - **Banned phrases** — words and patterns to avoid
+   - **Sentence length / rhythm** — short, mixed, longer; paragraph style; em-dash usage
+   - **Hook patterns** — preferred and avoided
+
+   From this plugin's `user-context.md`:
    - **Audience** — who's reading this (shapes which framings land).
    - **Post format** — bullets vs. paragraphs, where source links go (in-post vs. first-comment), CTA preferences, signature/sign-off if any.
    - **Hashtags** — preferred set, max count.
+
+   If both files have voice rules and they conflict, the shared `voice.md` wins — it's the canonical voice. Note any conflict in Drafting Notes so the user can resolve.
 
 2. **Pick the spine.** Decide the through-line:
    - If there's a strong theme (≥3 stories cluster), the spine is *that theme*. The roundup becomes "here's what this week's pattern means."

@@ -8,6 +8,25 @@ Short interview that captures the context news-curator and post-assembler need t
 
 ---
 
+## Pre-step — Read shared identity (if available)
+
+Before asking identity-style questions (name, company, role), check whether `~/Documents/Claude/identity.md` exists. This is a shared identity file populated by cortex's `/setup-identity` command — every BrightWayAI marketplace plugin reads it.
+
+- **If it exists and is populated:** read it. Identity isn't the focus of news-curator's setup, but having it loaded helps post-assembler match voice and address the user correctly. Use it as background context.
+- **If it doesn't exist:** mention once that running `/setup-identity` first would benefit other plugins too (not blocking for this setup — news-curator focuses on topic, audience, voice, sources, which it captures regardless).
+
+## Pre-step 2 — Read shared voice (if available)
+
+After identity, check whether `~/Documents/Claude/voice.md` exists. This is a shared writing-voice file populated by cortex's `/setup-voice` command — used by every drafting plugin (bizdev-outreach, weekly-outreach, lead-engine, news-curator) so voice stays consistent. The post-assembler subagent in this plugin reads from it directly.
+
+- **If it exists and is populated:** read it. Use those values to pre-fill Section 3 (Voice and format) of this interview. Skip those questions; just confirm.
+- **If it doesn't exist:** offer:
+  > "Want to capture your writing voice once via `/setup-voice` (in cortex)? It saves to a shared file every drafting plugin (including this one's post-assembler) reads. Run it now (~5 min) or capture voice inline here?"
+  - "Run /setup-voice first" → route there, then resume.
+  - "Inline" → proceed normally.
+
+---
+
 ## Step 1 — Check for existing config
 
 Read `references/user-context.md` if it exists.
