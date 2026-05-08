@@ -1,0 +1,110 @@
+---
+description: Configure news-curator for your topic, audience, sources, and voice via a short interview. Writes results to references/user-context.md so news-curator and post-assembler can do real work. Re-run anytime to update.
+---
+
+# /setup-news
+
+Short interview that captures the context news-curator and post-assembler need to be useful for *you* — your topic, your audience, your voice, your sources.
+
+---
+
+## Step 1 — Check for existing config
+
+Read `references/user-context.md` if it exists.
+
+- If populated → ask: "You've already configured news-curator. Update specific sections, or start over?"
+  - "Update [section]" → jump to that section.
+  - "Start over" → run full interview.
+- If not → start fresh. Read `references/user-context.template.md` for structure.
+
+---
+
+## Step 2 — The interview
+
+One section at a time. Confirm before moving to the next.
+
+### Section 1 — Topic and audience
+
+- What topic / vertical do you cover? (AI / climate / fintech / security / healthcare / [other])
+- Who's your audience? Be specific — "leaders and operators," "ML engineers," "policy people," "founders," "investors." Knowing this drives the ranking.
+- One sentence describing what you want this audience to walk away with after reading your weekly post.
+
+### Section 2 — Sources
+
+- Which newsletters do you actually read? (List 3–10 — Stratechery, Ben's Bites, Last Week in AI, etc.)
+- Which sites do you trust for primary reporting? (e.g., The Information, Wired, Reuters)
+- Anything you explicitly want to *avoid*? (e.g., "no Hacker News meta-discussions," "skip aggregators that just rehash other reporting")
+- Are you subscribed to any paywalled outlets? (If yes, those become fair game for body summaries; if no, news-curator notes the headline and skips.)
+
+### Section 3 — Voice and format
+
+- Three words describing your voice. (e.g., "warm, direct, contrarian.")
+- Banned phrases — words you don't use. (Common: "leverage," "synergy," "delight," "game-changer.")
+- Sentence length preference — short and punchy / mixed / longer-form?
+- Hook patterns you like — contrarian / observation / prediction / question / mix?
+- Body format — bullets / numbered list / narrative paragraphs / mix?
+- Where do source links go — in the post body, or in a first-comment? (Default: first-comment — better for LinkedIn distribution.)
+- Sign-off / CTA — anything you say at the end of every roundup post? Or none?
+- Hashtags — preferred set, max count, or "no hashtags"?
+
+### Section 4 — Cadence and length
+
+- What day/time do you typically post? (Friday afternoon? Monday morning?)
+- Length target by default — short (≤700 chars) / medium (700–1500) / long (1500–3000)?
+- How many candidates do you typically want surfaced? (Default 10. Some people prefer 7 to force harder cuts; some prefer 15 for more selection.)
+
+---
+
+## Step 3 — Write the config
+
+Populate `references/user-context.md` with answers, structured for fast agent reads:
+
+```markdown
+# news-curator user context
+
+_Last updated: [date]_
+
+## Topic and audience
+- **Topic:** ...
+- **Audience:** ...
+- **Walkaway:** ...
+
+## Sources
+- **Preferred newsletters:** ...
+- **Trusted sites:** ...
+- **Avoid:** ...
+- **Paywalled subscriptions:** ...
+
+## Voice
+- **Three words:** ...
+- **Banned phrases:** ...
+- **Sentence length:** ...
+- **Hook patterns:** ...
+
+## Format
+- **Body format:** ...
+- **Source links:** [in-comment / in-body]
+- **Sign-off / CTA:** ...
+- **Hashtags:** ...
+
+## Cadence
+- **Post day/time:** ...
+- **Default length:** [short / medium / long]
+- **Candidate count:** ...
+```
+
+---
+
+## Step 4 — Confirm and offer next step
+
+Summarize what was saved (one short paragraph) and offer:
+> "Try `/ai-roundup` to run the full pipeline — scan, pick, draft. Should take 3–5 minutes."
+
+---
+
+## Behavior rules
+
+- **One section at a time.** Don't blast all questions.
+- **Skip what doesn't apply.** "I don't have banned phrases yet" is a valid answer — capture it as such.
+- **Idempotent.** Re-running `/setup-news` updates without re-doing finished sections.
+- **Keep it tight.** Whole interview should take under 5 minutes if the user has answers ready.

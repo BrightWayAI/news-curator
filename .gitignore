@@ -1,0 +1,11 @@
+# User-specific config (populated during /setup-news)
+references/user-context.md
+
+# Cached candidate lists (per-run output)
+runs/*.md
+
+# OS files
+.DS_Store
+
+# Archives
+*.zip
