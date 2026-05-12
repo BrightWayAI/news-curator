@@ -11,7 +11,7 @@ A single slash command (`/ai-roundup`) orchestrates the whole pipeline.
 
 ## Install
 
-Recommended: install via the [BrightWayAI marketplace](https://github.com/BrightWayAI/claude-plugins).
+Recommended: install via the [BrightWayAI marketplace](https://github.com/BrightWayAI/nucleus).
 
 Or directly:
 
