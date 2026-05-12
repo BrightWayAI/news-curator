@@ -14,7 +14,7 @@ See `commands/ai-roundup.md` for the full pipeline workflow.
 
 ## Pre-flight check
 
-Before running, confirm `references/user-context.md` exists and is populated. If missing, route to `/setup-news` first — the pipeline produces generic, off-voice output without context.
+Before running, confirm `<config-root>/plugins/news-curator.user-context.md` exists and is populated. If missing, route to `/setup-news` first — the pipeline produces generic, off-voice output without context.
 
 ## What this skill is *not* for
 

@@ -12,7 +12,7 @@ This command orchestrates two subagents and a user-pick step in the middle. It's
 
 ## Step 1 — Pre-flight
 
-Read `references/user-context.md`. If missing or unpopulated, route to `/setup-news` and stop.
+Read `<config-root>/plugins/news-curator.user-context.md`. If missing or unpopulated, route to `/setup-news` and stop.
 
 If populated, surface a one-line config check:
 > "Configured for: **[topic]** for **[audience]**. Sources: [N preferred + open web]. Voice: [3 voice descriptors]. Length target: [short/medium/long]. Look right? (Y to proceed, edit to adjust)"
@@ -24,7 +24,7 @@ If the user says "edit," route to `/setup-news`. Otherwise proceed.
 ## Step 2 — Scan and rank (delegate to news-curator)
 
 Use the Task tool with `subagent_type="news-curator"` and pass:
-- `user-context-path` — the absolute path to `references/user-context.md`
+- `user-context-path` — the absolute path to `<config-root>/plugins/news-curator.user-context.md`
 - `time-window` — default 7 days, override if user specified
 - `max-candidates` — default 10
 

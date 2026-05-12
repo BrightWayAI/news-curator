@@ -1,5 +1,5 @@
 ---
-description: Configure news-curator for your topic, audience, sources, and voice via a short interview. Writes results to references/user-context.md so news-curator and post-assembler can do real work. Re-run anytime to update.
+description: Configure news-curator for your topic, audience, sources, and voice via a short interview. Writes results to <config-root>/plugins/news-curator.user-context.md so news-curator and post-assembler can do real work. Re-run anytime to update.
 ---
 
 # /setup-news
@@ -8,28 +8,40 @@ Short interview that captures the context news-curator and post-assembler need t
 
 ---
 
-## Pre-step — Read shared identity (if available)
+## Step 0 — Resolve plugin config root
 
-Before asking identity-style questions (name, company, role), check whether `~/Documents/Claude/identity.md` exists. This is a shared identity file populated by cortex's `/setup-identity` command — every BrightWayAI marketplace plugin reads it.
+Per-plugin config in this marketplace lives under a user-chosen folder, recorded at `~/.claude-plugin-config-root` (single-line text file in the user's home).
 
-- **If it exists and is populated:** read it. Identity isn't the focus of news-curator's setup, but having it loaded helps post-assembler match voice and address the user correctly. Use it as background context.
-- **If it doesn't exist:** mention once that running `/setup-identity` first would benefit other plugins too (not blocking for this setup — news-curator focuses on topic, audience, voice, sources, which it captures regardless).
+### A — Try the pointer
 
-## Pre-step 2 — Read shared voice (if available)
+Call `request_cowork_directory(~)` if not granted, then read `~/.claude-plugin-config-root`.
+- **Exists**: read line 1 → mount via `request_cowork_directory(<config-root>)`. Skip to section C.
+- **Missing**: continue to section B.
 
-After identity, check whether `~/Documents/Claude/voice.md` exists. This is a shared writing-voice file populated by cortex's `/setup-voice` command — used by every drafting plugin (bizdev-outreach, weekly-outreach, lead-engine, news-curator) so voice stays consistent. The post-assembler subagent in this plugin reads from it directly.
+### B — First-time bootstrap
 
-- **If it exists and is populated:** read it. Use those values to pre-fill Section 3 (Voice and format) of this interview. Skip those questions; just confirm.
-- **If it doesn't exist:** offer:
-  > "Want to capture your writing voice once via `/setup-voice` (in cortex)? It saves to a shared file every drafting plugin (including this one's post-assembler) reads. Run it now (~5 min) or capture voice inline here?"
-  - "Run /setup-voice first" → route there, then resume.
-  - "Inline" → proceed normally.
+Prompt: "First-time plugin setup. Where should I store your plugin config — identity, voice, and per-plugin settings? Pick a folder you control (e.g., `~/Documents/Claude/` or `~/Documents/PluginConfig/`). The folder will hold `identity.md`, `voice.md`, and a `plugins/` subdirectory."
+
+Then:
+1. Call `request_cowork_directory(<path>)`. Create `<path>/plugins/`. Write absolute path to `~/.claude-plugin-config-root`.
+2. **Migration**: if `~/Documents/Claude/identity.md` or `voice.md` exists and `<path>` is not `~/Documents/Claude/`, offer to copy.
+3. **Pre-staged content**: if `~/Documents/Claude/plugin-configs/*.user-context.md` files exist, offer to copy into `<path>/plugins/`.
+
+### C — Read shared identity and voice
+
+Read `<config-root>/identity.md` (cortex's `/setup-identity`) and `<config-root>/voice.md` (cortex's `/setup-voice`). The post-assembler subagent in this plugin reads voice directly from this file at draft time.
+
+- **Identity populated** → use as background context (post-assembler addresses the user correctly).
+- **Voice populated** → pre-fill Section 3 (Voice and format) of this interview. Skip those questions; just confirm.
+- **Missing** → offer to run `/setup-identity` and/or `/setup-voice` first, or proceed inline.
+
+For the rest of this document, **`<config-root>`** refers to the resolved path. This plugin's config file lives at **`<config-root>/plugins/news-curator.user-context.md`**.
 
 ---
 
 ## Step 1 — Check for existing config
 
-Read `references/user-context.md` if it exists.
+Read `<config-root>/plugins/news-curator.user-context.md` if it exists.
 
 - If populated → ask: "You've already configured news-curator. Update specific sections, or start over?"
   - "Update [section]" → jump to that section.
@@ -76,7 +88,7 @@ One section at a time. Confirm before moving to the next.
 
 ## Step 3 — Write the config
 
-Populate `references/user-context.md` with answers, structured for fast agent reads:
+Populate `<config-root>/plugins/news-curator.user-context.md` with answers, structured for fast agent reads:
 
 ```markdown
 # news-curator user context

@@ -12,7 +12,7 @@ You are a drafting agent. You take selected news candidates + the user's voice a
 
 You inherit parent tools. Expect:
 
-- **Read** — to load `references/user-context.md` and any voice/style reference files the user has.
+- **Read** — to load `<config-root>/plugins/news-curator.user-context.md` and any voice/style reference files the user has.
 
 That's it. No web access. If you find yourself wanting to search, stop — your inputs are sufficient and the parent skill should add what's missing before re-invoking you.
 
@@ -20,7 +20,7 @@ That's it. No web access. If you find yourself wanting to search, stop — your 
 
 The parent skill passes:
 
-- **`user-context-path`** (required) — path to `references/user-context.md`. You read this first for voice rules, audience, post format preferences.
+- **`user-context-path`** (required) — path to `<config-root>/plugins/news-curator.user-context.md`. You read this first for voice rules, audience, post format preferences.
 - **`candidates`** (required) — list of selected stories from `news-curator`'s output. Each item has headline, summary, why-it-matters, source URL, score.
 - **`themes`** (optional) — themes of the week from news-curator's output, used as the post's spine if there's a clear pattern.
 - **`hook-style`** (optional, default "auto") — `"contrarian"` / `"observation"` / `"prediction"` / `"question"` / `"auto"` (you pick).
@@ -28,7 +28,7 @@ The parent skill passes:
 
 ## Workflow
 
-1. **Read voice rules** — first check `~/Documents/Claude/voice.md` (the shared voice file populated by cortex's `/setup-voice`). If it exists, prefer those rules — they're the user's canonical voice across every drafting plugin. Then read this plugin's `user-context.md` for plugin-specific overrides (post format, hashtag preferences, audience).
+1. **Read voice rules** — first check `<config-root>/voice.md` (the shared voice file populated by cortex's `/setup-voice`). If it exists, prefer those rules — they're the user's canonical voice across every drafting plugin. Then read this plugin's `user-context.md` for plugin-specific overrides (post format, hashtag preferences, audience).
 
    Voice rules to extract (from shared voice.md if present, else from user-context.md):
    - **Voice descriptors** — three-words + "NOT this"

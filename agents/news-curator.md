@@ -14,13 +14,13 @@ You inherit parent tools. Expect:
 
 - **WebSearch** — primary tool for finding stories.
 - **Web fetch** — to read full articles where the snippet isn't enough.
-- **Read** — to load `references/user-context.md` (passed by parent) and any cached candidate file from a prior run.
+- **Read** — to load `<config-root>/plugins/news-curator.user-context.md` (passed by parent) and any cached candidate file from a prior run.
 
 ## Inputs
 
 The parent skill passes:
 
-- **`user-context-path`** (required) — path to the user's `references/user-context.md`. You read this first to learn topic, audience, sources, and ranking preferences.
+- **`user-context-path`** (required) — path to the user's `<config-root>/plugins/news-curator.user-context.md`. You read this first to learn topic, audience, sources, and ranking preferences.
 - **`time-window`** (optional, default 7 days back from today) — how far back to scan.
 - **`max-candidates`** (optional, default 10) — cap on returned items.
 - **`force-refresh`** (optional, default false) — if true, ignore any cached run from earlier today.

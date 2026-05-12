@@ -4,6 +4,15 @@ All notable changes to news-curator are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/). Versions match `plugin.json`.
 
+## [0.2.0] — Config-root refactor
+
+### Changed
+- **Plugin config moved to a user-chosen folder.** Reads/writes now go to `<config-root>/plugins/news-curator.user-context.md` via the pointer at `~/.claude-plugin-config-root`.
+- **`/setup-news` Step 0 bootstraps the config root** and reads shared identity + voice.
+- **`post-assembler` subagent** now reads voice from `<config-root>/voice.md` (the canonical voice file) — same path other drafting plugins use.
+- **`/ai-roundup` updated** to read the new path.
+- **User-facing prompts debranded** for fork-friendliness.
+
 ## [0.1.0] — Initial release
 
 ### Added

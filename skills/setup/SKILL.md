@@ -14,6 +14,6 @@ See `commands/setup-news.md` for the full interview.
 
 ## Quick path
 
-If the user wants minimum-viable defaults to start: write a placeholder `references/user-context.md` with topic="AI" and audience="leaders and operators," voice descriptors blank, sources empty (open-web scan only). Note in your reply that the agents will work but produce generic output until the user fills in voice/sources, and recommend running the full interview when they have 5 minutes.
+If the user wants minimum-viable defaults to start: write a placeholder `<config-root>/plugins/news-curator.user-context.md` with topic="AI" and audience="leaders and operators," voice descriptors blank, sources empty (open-web scan only). Note in your reply that the agents will work but produce generic output until the user fills in voice/sources, and recommend running the full interview when they have 5 minutes.
 
 Don't auto-write defaults silently — only on explicit request.
