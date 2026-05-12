@@ -1,6 +1,6 @@
 {
   "name": "news-curator",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Curate and draft a weekly LinkedIn AI roundup post (or any vertical news roundup). Two subagents: news-curator scans newsletters and the open web for the week's most important stories ranked for your audience; post-assembler drafts the LinkedIn post in your voice from the candidates you select. Configurable per user via /setup-news.",
   "author": {
     "name": "BrightWay AI"

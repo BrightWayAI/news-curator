@@ -7,7 +7,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/). Versions match `
 ## [0.2.0] — Config-root refactor
 
 ### Changed
-- **Plugin config moved to a user-chosen folder.** Reads/writes now go to `<config-root>/plugins/news-curator.user-context.md` via the pointer at `~/.claude-plugin-config-root`.
+- **Plugin config moved to a user-chosen folder.** Reads/writes now go to `<config-root>/plugins/news-curator.user-context.md` via the pointer at `~/Documents/.claude-plugin-config-root`.
 - **`/setup-news` Step 0 bootstraps the config root** and reads shared identity + voice.
 - **`post-assembler` subagent** now reads voice from `<config-root>/voice.md` (the canonical voice file) — same path other drafting plugins use.
 - **`/ai-roundup` updated** to read the new path.
