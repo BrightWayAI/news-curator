@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: setup
 description: Configure news-curator for your topic, audience, sources, and voice. Auto-fires on "set up news-curator", "configure roundup", "/setup-news", or any phrase about getting the news roundup pipeline ready. Also fires when the roundup pipeline reports user-context.md is missing.
 ---

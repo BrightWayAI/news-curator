@@ -1,6 +1,6 @@
 {
   "name": "news-curator",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Find recent stories, rank them for a configured audience, and assemble a voice-matched roundup with traceable sources.",
   "author": {
     "name": "BrightWay AI",

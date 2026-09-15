@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: setup-news
 description: "Configure news-curator for your topic, audience, sources, and voice via a short interview. Writes results to <config-root>/plugins/news-curator.user-context.md so news-curator and post-assembler can do real work. Re-run anytime to update."
 ---

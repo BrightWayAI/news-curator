@@ -1,4 +1,5 @@
 ---
+disable-model-invocation: true
 name: ai-roundup
 description: Run the full weekly news roundup pipeline — scan, pick candidates, draft a LinkedIn-ready post in your voice. Auto-fires on "/ai-roundup", "weekly AI roundup", "do my roundup", "curate this week's post", "weekly LinkedIn post", "run the roundup", "what happened in [topic] this week" (when the user has news-curator configured for that topic). Orchestrates the news-curator and post-assembler subagents.
 ---
