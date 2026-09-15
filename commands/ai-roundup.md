@@ -104,9 +104,9 @@ When the user says "ship it," do a final pass:
 - Output the final post + first-comment cleanly, ready to copy-paste.
 
 Then ask:
-> "Save this run to `runs/[date].md` for the archive? (Y/N)"
+> "Save this run to `<config-root>/news-curator/runs/[date].md` for the archive? (Y/N)"
 
-If yes, write to `runs/[YYYY-MM-DD].md` with: timestamp, candidates considered, candidates selected, final post, alternate hook. (`runs/` is gitignored — local archive only.)
+If yes, write to `<config-root>/news-curator/runs/[YYYY-MM-DD].md` with: timestamp, candidates considered, candidates selected, final post, alternate hook. Never write run data into the installed plugin directory.
 
 ---
 

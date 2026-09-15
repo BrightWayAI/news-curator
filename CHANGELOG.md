@@ -4,6 +4,12 @@ All notable changes to news-curator are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/). Versions match `plugin.json`.
 
+## [0.2.8] — host-neutral role metadata (2026-09-15)
+
+### Changed
+- Added host-neutral deep-reasoning intent alongside Claude model bindings for research and assembly roles.
+- Standardized setup on the vendor-neutral config-root resolver and moved optional run archives out of the installed plugin directory.
+
 ## [0.2.7] — Codex adapter synchronization (2026-09-15)
 
 ### Fixed

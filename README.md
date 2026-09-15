@@ -29,7 +29,7 @@ Run `/setup-news`. The setup skill walks you through a short interview and captu
 - **Voice and format** — banned phrases, tone, post length, structure preferences (e.g., "5 bullets + first-comment with links").
 - **Cadence** — when you typically post and how the candidate list should be sized.
 
-Answers are saved to `references/user-context.md` (gitignored). Both agents read this before working.
+Answers are saved to `<config-root>/plugins/news-curator.user-context.md`. Both agents read this before working.
 
 You can re-run `/setup-news` anytime to update.
 
