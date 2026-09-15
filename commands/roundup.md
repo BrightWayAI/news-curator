@@ -1,12 +1,12 @@
 ---
-description: Run the full weekly AI roundup pipeline (or any vertical roundup once configured) — scan newsletters and the web, surface candidates, let the user pick, then draft a LinkedIn-ready post in their voice. Orchestrates the news-curator and post-assembler subagents end-to-end. Renamed from `/ai-roundup` (2026-09-15); `/ai-roundup` remains a deprecation alias.
+description: Run the weekly roundup scan (or any vertical roundup once configured) — scan newsletters and the web, surface candidates, let the user pick, then stage the selection for drafting. Orchestrates the news-curator subagent. Research finds; Comms Desk writes — use `--draft` (requires comms) to chain straight into drafting, or run comms's `/post` manually later. Renamed from `/ai-roundup` (2026-09-15); `/ai-roundup` remains a deprecation alias.
 ---
 
 # /roundup
 
-End-to-end pipeline for the weekly roundup post.
+Pipeline for finding and staging the week's roundup candidates.
 
-This command orchestrates two subagents and a user-pick step in the middle. It's a slash command (not a subagent) so the user can intervene between steps — pick which candidates to include, tweak the angle, regenerate.
+This command orchestrates the news-curator subagent and a user-pick step. It's a slash command (not a subagent) so the user can intervene — pick which candidates to include, tweak the angle, rerun the scan. It stops once the picks are staged; drafting is comms's job (`/post`), not research's.
 
 ---
 
@@ -57,62 +57,45 @@ If user wants to skip the selection step entirely (`/roundup --auto-pick`), use 
 
 ---
 
-## Step 4 — Draft the post (delegate to post-assembler)
+## Step 4 — Stage the picks and stop
 
-Use the Task tool with `subagent_type="post-assembler"` and pass:
-- `user-context-path`
-- `candidates` — the user's selected items (full data, not just numbers)
-- `themes` — themes of the week from news-curator's output
-- `hook-style` — default "auto," override if user specified
-- `length-target` — from user-context, override if user specified
+Write the selected candidates to `<config-root>/staged/roundup/[YYYY-MM-DD].md` (today's date), containing:
 
-Wait for the draft to return.
+```markdown
+# Roundup candidates — [YYYY-MM-DD]
 
----
+## Selected candidates
+For each selected item: headline, one-sentence summary, why it matters, source link, relevance score.
 
-## Step 5 — Show the draft and offer iteration
+## Themes of the week
+[from news-curator's output]
 
-Render the draft:
+## Notable tools / releases
+[from news-curator's output, if any]
 
-```
-**Draft:**
-
-[full post]
-
-**First comment (sources):**
-
-[sources list]
-
-**Alternate hook:**
-
-[the alt hook]
+## Confidence & gaps
+[from news-curator's output]
 ```
 
-Then offer:
-> "What now? — 'ship it' (copy-paste ready) — 'use the alt hook' — 'shorter' / 'longer' — 'sharper hook' (regenerates with a different style) — 'redo with X' (your direction)"
+Confirm to the user:
+> "Staged [N] candidates to `<config-root>/staged/roundup/[date].md`. Run comms's `/post` to draft the roundup in your voice — or `/roundup --draft` next time to chain straight into drafting."
 
-For most edits, you can iterate inline without re-invoking post-assembler. For "redo with X" or major angle shifts, re-invoke post-assembler with updated guidance in the brief.
+Research's job ends here. **Do not draft a post** — that's comms's `/post` command (which uses the `post-assembler` agent). Research finds; Comms Desk writes.
 
----
+### `--draft` flag — chain into comms
 
-## Step 6 — Done
+If invoked as `/roundup --draft`:
 
-When the user says "ship it," do a final pass:
-- Verify no banned phrases (per user-context)
-- Verify length is within target
-- Verify hashtags per user-context
-- Output the final post + first-comment cleanly, ready to copy-paste.
-
-Then ask:
-> "Save this run to `<config-root>/research/runs/[date].md` for the archive? (Y/N)"
-
-If yes, write to `<config-root>/research/runs/[YYYY-MM-DD].md` with: timestamp, candidates considered, candidates selected, final post, alternate hook. Never write run data into the installed plugin directory.
+1. Check whether comms is installed: look for `<config-root>/plugins/comms.user-context.md` (comms configured) or otherwise detect the `comms` plugin/command set is available in this environment.
+2. **If comms is available** — after writing the staged file, invoke comms's `/post` command directly, passing the staged file path as its input, instead of the confirmation message above. Let `/post` take over the rest of the interaction (draft, iterate, ship).
+3. **If comms is not installed/available** — write the staged file as normal, then tell the user:
+   > "Staged [N] candidates to `<config-root>/staged/roundup/[date].md`. Drafting isn't available — the Comms Desk plugin isn't installed. Install it and run `/post` to draft this roundup in your voice."
+   Do not fail or error; `/roundup --draft` degrades to the same behavior as plain `/roundup` when comms is absent.
 
 ---
 
 ## Behavior rules
 
 - **Don't skip Step 3** unless the user explicitly opts out. Picking is part of the user's editorial voice — even "pick for me" is an explicit opt-out, not a default.
-- **Iterate without re-scanning.** Steps 4–6 should be fast. Re-scanning the web is expensive; only do it if the user explicitly asks ("rerun the scan, the news shifted today").
-- **Voice over speed.** If the draft doesn't sound like the user, fix it. A delayed post in their voice beats a fast post in generic LinkedIn-ese.
-- **Be honest about gaps.** If news-curator surfaced a slow week, tell the user upfront — "Slow week, only 6 strong candidates" — so they can choose to wait, broaden the topic, or post a different format.
+- **This command doesn't draft.** Drafting lives in comms's `/post` (and its `post-assembler` agent). If a user asks `/roundup` to "just write the post," point them at `/post` or `/roundup --draft`.
+- **Be honest about gaps.** If news-curator surfaced a slow week, tell the user upfront — "Slow week, only 6 strong candidates" — so they can choose to wait, broaden the topic, or stage anyway.

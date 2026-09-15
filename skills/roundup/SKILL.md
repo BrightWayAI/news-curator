@@ -1,7 +1,7 @@
 ---
 disable-model-invocation: true
 name: roundup
-description: Run the full weekly news roundup pipeline — scan, pick candidates, draft a LinkedIn-ready post in your voice. Auto-fires on "/roundup", "/ai-roundup", "weekly AI roundup", "do my roundup", "curate this week's post", "weekly LinkedIn post", "run the roundup", "what happened in [topic] this week" (when the user has news-curator configured for that topic). Orchestrates the news-curator and post-assembler subagents. Renamed from `ai-roundup` (2026-09-15).
+description: Run the weekly news roundup scan — scan, pick candidates, stage them for drafting. Auto-fires on "/roundup", "/ai-roundup", "weekly AI roundup", "do my roundup", "curate this week's post", "weekly LinkedIn post", "run the roundup", "what happened in [topic] this week" (when the user has news-curator configured for that topic). Orchestrates the news-curator subagent; use `--draft` to chain into comms's `/post` for drafting (requires comms installed). Renamed from `ai-roundup` (2026-09-15).
 ---
 
 <!-- OPENAI-ADAPTER:START -->
@@ -30,5 +30,5 @@ Before running, confirm `<config-root>/plugins/research.user-context.md` exists 
 ## What this skill is *not* for
 
 - Ad-hoc news questions ("what's the latest on X?"). For that, use WebSearch directly.
-- Drafting non-roundup posts (single-story posts, opinion pieces). The post-assembler is roundup-shaped; for other formats, use a writing skill.
+- Drafting. This skill finds and stages candidates; it does not write the post. Drafting is comms's `/post` command (`--draft` chains into it automatically if comms is installed).
 - Cross-topic posts. This pipeline is configured to one topic at a time. To roundup multiple topics, run twice and stitch manually.

@@ -4,6 +4,18 @@ All notable changes to news-curator are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/). Versions match `plugin.json`.
 
+## [0.4.0] — Research finds, Comms Desk writes (2026-09-15)
+
+### Changed
+- `/roundup` no longer drafts a post. It now stops after the user picks candidates, writing them to `<config-root>/staged/roundup/<date>.md` (summaries + links + themes). Drafting moved entirely to comms's new `/post` command.
+- The `post-assembler` agent moved out of this plugin into `comms/agents/post-assembler.md` — research's remaining subagent is `news-curator` only.
+- `/roundup` gained a `--draft` flag: when comms is installed, it chains straight from staging into comms's `/post`. When comms isn't installed, `/roundup --draft` degrades to plain `/roundup` behavior (stages, tells the user drafting isn't available, and points at `/post` once comms is installed) rather than failing.
+- `/setup-news` no longer asks voice-descriptor / banned-phrase / sentence-length / hook-pattern interview questions. Voice is read directly from `<config-root>/memory/me/voice.md` (cortex's `/setup-voice`) at draft time by comms; this plugin's interview now covers topic, audience, sources, and roundup-specific format only.
+- Plugin description updated to reflect find/curate-only scope; drafting ownership language removed.
+
+### Coordination note
+- `/setup-news` documents that voice capture is not this plugin's responsibility. If a parallel `comms:setup-voice`-style flow is introduced, this plugin doesn't need further changes — it never reads voice fields itself.
+
 ## [0.3.0] — Renamed to research (2026-09-15)
 
 ### Changed

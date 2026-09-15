@@ -2,14 +2,13 @@
 
 _Renamed from `news-curator` to `research` (display name: Research) as part of the 2026-09-15 Nucleus plugin rename._
 
-Curate and draft a weekly news roundup post — built originally for AI roundups on LinkedIn, but the topic and audience are configurable, so it works for any vertical (climate, infra, security, your industry).
+Finds and curates a weekly news roundup's candidates — built originally for AI roundups on LinkedIn, but the topic and audience are configurable, so it works for any vertical (climate, infra, security, your industry). Research finds; drafting is [Comms Desk](https://github.com/BrightWayAI/voice)'s job.
 
-Two subagents handle the heavy lift:
+One subagent handles the scan:
 
 - **news-curator** — scans the past 7 days of newsletters and the open web, ranks stories for your audience, and returns ~10 candidates with summaries and source links.
-- **post-assembler** — takes the candidates you pick + your voice rules and drafts the LinkedIn post (and a first-comment with sources).
 
-A single slash command (`/roundup`, formerly `/ai-roundup`) orchestrates the whole pipeline.
+A single slash command (`/roundup`, formerly `/ai-roundup`) scans, lets you pick candidates, and stages your picks to `<config-root>/staged/roundup/<date>.md`. From there, run comms's `/post` to draft the post in your voice — or use `/roundup --draft` to chain straight into drafting when comms is installed. If comms isn't installed, `/roundup` still completes normally; it just tells you drafting isn't available yet.
 
 ## Install
 
@@ -28,10 +27,12 @@ Run `/setup-news`. The setup skill walks you through a short interview and captu
 
 - **Topic and audience** — what vertical you cover (AI / climate / etc.) and who you're writing for (leaders, ICs, engineers, investors).
 - **Sources** — newsletters, RSS feeds, and sites to prioritize.
-- **Voice and format** — banned phrases, tone, post length, structure preferences (e.g., "5 bullets + first-comment with links").
+- **Format** — post length, structure preferences (e.g., "5 bullets + first-comment with links").
 - **Cadence** — when you typically post and how the candidate list should be sized.
 
-Answers are saved to `<config-root>/plugins/research.user-context.md`. Both agents read this before working.
+Voice itself (tone, banned phrases, hook patterns) isn't captured here — it's read directly from `<config-root>/memory/me/voice.md` (comms's `/setup-voice`) when comms drafts the post.
+
+Answers are saved to `<config-root>/plugins/research.user-context.md`. `news-curator` reads this before working.
 
 You can re-run `/setup-news` anytime to update.
 
@@ -41,7 +42,6 @@ You can re-run `/setup-news` anytime to update.
 .claude-plugin/plugin.json     Plugin manifest
 agents/
   news-curator.md              Subagent: scans + ranks stories
-  post-assembler.md            Subagent: drafts the LinkedIn post
 commands/
   roundup.md                   Slash command: full pipeline
   ai-roundup.md                Deprecated alias for /roundup
@@ -58,7 +58,7 @@ references/
 
 - `WebSearch` — required for scanning the open web.
 - A web-fetch tool (built-in) — for reading source articles.
-- That's it. Optional: a Drive connector if you want to drop the candidate list to a file before drafting.
+- That's it. Optional: [Comms Desk](https://github.com/BrightWayAI/voice) installed, for drafting the staged candidates into a post (`/post`, or `/roundup --draft`).
 
 <!-- OPENAI-SUPPORT:START -->
 ## ChatGPT and Codex

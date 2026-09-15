@@ -1,5 +1,5 @@
 ---
-description: Configure news-curator for your topic, audience, sources, and voice via a short interview. Writes results to <config-root>/plugins/research.user-context.md so news-curator and post-assembler can do real work. Re-run anytime to update.
+description: Configure news-curator for your topic, audience, sources, and format via a short interview. Writes results to <config-root>/plugins/research.user-context.md so news-curator can do real work. Voice itself is read from <config-root>/memory/me/voice.md, not captured here. Re-run anytime to update.
 ---
 
 # /setup-news
@@ -30,11 +30,13 @@ Then:
 
 ### C — Read shared identity and voice
 
-Read `<config-root>/memory/me/identity.md` (cortex's `/setup-identity`) and `<config-root>/memory/me/voice.md` (cortex's `/setup-voice`). The post-assembler subagent in this plugin reads voice directly from this file at draft time.
+Read `<config-root>/memory/me/identity.md` (cortex's `/setup-identity`) and `<config-root>/memory/me/voice.md` (comms's `/setup-voice`). Voice itself is not configured here — comms's `/post` command and its `post-assembler` agent read `voice.md` directly at draft time. This interview only captures roundup-specific format preferences (Section 3, below).
 
-- **Identity populated** → use as background context (post-assembler addresses the user correctly).
-- **Voice populated** → pre-fill Section 3 (Voice and format) of this interview. Skip those questions; just confirm.
-- **Missing** → offer to run `/setup-identity` and/or `/setup-voice` first, or proceed inline.
+- **Identity populated** → use as background context.
+- **Voice populated** → good, nothing to do here; comms will use it when drafting.
+- **Voice missing** → offer to run comms's `/setup-voice` first — the roundup will draft in a generic voice via comms until it's populated. Not a blocker to finishing this interview.
+
+Coordination note: this plugin does not own or duplicate voice interview questions — that responsibility lives with comms's `/setup-voice`. If comms's setup command doesn't yet read `voice.md` the same way, treat that as a parallel-track gap to close there, not here.
 
 For the rest of this document, **`<config-root>`** refers to the resolved path. This plugin's config file lives at **`<config-root>/plugins/research.user-context.md`**.
 
@@ -68,12 +70,8 @@ One section at a time. Confirm before moving to the next.
 - Anything you explicitly want to *avoid*? (e.g., "no Hacker News meta-discussions," "skip aggregators that just rehash other reporting")
 - Are you subscribed to any paywalled outlets? (If yes, those become fair game for body summaries; if no, news-curator notes the headline and skips.)
 
-### Section 3 — Voice and format
+### Section 3 — Format (voice itself comes from `<config-root>/memory/me/voice.md`, not this interview)
 
-- Three words describing your voice. (e.g., "warm, direct, contrarian.")
-- Banned phrases — words you don't use. (Common: "leverage," "synergy," "delight," "game-changer.")
-- Sentence length preference — short and punchy / mixed / longer-form?
-- Hook patterns you like — contrarian / observation / prediction / question / mix?
 - Body format — bullets / numbered list / narrative paragraphs / mix?
 - Where do source links go — in the post body, or in a first-comment? (Default: first-comment — better for LinkedIn distribution.)
 - Sign-off / CTA — anything you say at the end of every roundup post? Or none?
@@ -108,10 +106,7 @@ _Last updated: [date]_
 - **Paywalled subscriptions:** ...
 
 ## Voice
-- **Three words:** ...
-- **Banned phrases:** ...
-- **Sentence length:** ...
-- **Hook patterns:** ...
+_Not captured here — drafting reads `<config-root>/memory/me/voice.md` directly (comms's `/setup-voice`). Run that command if it isn't populated yet._
 
 ## Format
 - **Body format:** ...
@@ -130,7 +125,7 @@ _Last updated: [date]_
 ## Step 4 — Confirm and offer next step
 
 Summarize what was saved (one short paragraph) and offer:
-> "Try `/roundup` to run the full pipeline — scan, pick, draft. Should take 3–5 minutes."
+> "Try `/roundup` to scan and pick this week's candidates (should take 3–5 minutes) — then run comms's `/post` to draft it in your voice, or use `/roundup --draft` to chain straight into drafting if comms is installed."
 
 ---
 

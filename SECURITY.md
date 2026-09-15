@@ -2,17 +2,16 @@
 
 ## What this plugin does with your data
 
-Research (formerly News Curator) scans newsletters and the open web to produce a weekly roundup post draft. Read-only against the public web; writes drafts inline plus an optional local archive.
+Research (formerly News Curator) scans newsletters and the open web to find and stage a weekly roundup's candidates. Read-only against the public web; writes a staged candidate file, not a finished post. Drafting the post is comms (Comms Desk)'s job.
 
 **Reads:**
 - **Web** (`WebSearch` + web fetch) — preferred newsletter sites (per your `/setup-news` configuration), the open web for additional coverage.
-- **Plugin settings** — `<config-root>/plugins/research.user-context.md` (topic, audience, sources, voice/format).
-- **Shared private profile** — `<config-root>/memory/me/identity.md` and `voice.md` (read-only).
+- **Plugin settings** — `<config-root>/plugins/research.user-context.md` (topic, audience, sources, format).
+- **Shared private profile** — `<config-root>/memory/me/identity.md` (read-only). This plugin does not read `voice.md` itself; comms's `post-assembler` agent reads it at draft time.
 
 **Writes:**
-- **Drafts** — produced inline in conversation by the `post-assembler` subagent for your review. The post + first-comment + alternate hook.
+- **Staged candidates** — `<config-root>/staged/roundup/[date].md` (summaries, source links, themes) for the user to hand off to comms's `/post`. `/roundup --draft` chains into `/post` directly when comms is installed.
 - **Plugin settings** — `<config-root>/plugins/research.user-context.md` (after `/setup-news`).
-- **Optional local archive** — `<config-root>/research/runs/[date].md` if you accept the offer at end of `/ai-roundup`.
 
 **Does not:**
 - **Post to LinkedIn or any social platform automatically.** Drafts are review-then-paste-by-user.
