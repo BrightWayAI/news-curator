@@ -1,0 +1,35 @@
+{
+  "name": "news-curator",
+  "version": "0.2.4",
+  "description": "Find recent stories, rank them for a configured audience, and assemble a voice-matched roundup with traceable sources.",
+  "author": {
+    "name": "BrightWay AI",
+    "url": "https://brightwayai.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/BrightWayAI/news-curator",
+  "repository": "https://github.com/BrightWayAI/news-curator",
+  "keywords": [
+    "nucleus",
+    "chatgpt",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "News Curator",
+    "shortDescription": "Research and draft a cited weekly news roundup",
+    "longDescription": "Find recent stories, rank them for a configured audience, and assemble a voice-matched roundup with traceable sources.",
+    "developerName": "BrightWay AI",
+    "category": "Research",
+    "capabilities": [
+      "Read",
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/BrightWayAI/news-curator",
+    "defaultPrompt": [
+      "Research this week's top stories.",
+      "Draft my weekly roundup.",
+      "Configure my roundup audience."
+    ]
+  }
+}

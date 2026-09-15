@@ -3,6 +3,16 @@ name: ai-roundup
 description: Run the full weekly news roundup pipeline — scan, pick candidates, draft a LinkedIn-ready post in your voice. Auto-fires on "/ai-roundup", "weekly AI roundup", "do my roundup", "curate this week's post", "weekly LinkedIn post", "run the roundup", "what happened in [topic] this week" (when the user has news-curator configured for that topic). Orchestrates the news-curator and post-assembler subagents.
 ---
 
+<!-- OPENAI-ADAPTER:START -->
+## OpenAI host binding
+
+Before acting, read `../../references/openai-portability.md`. That file translates
+host-specific tools, agents, artifacts, scheduling, connectors, and config-root
+access for ChatGPT and Codex. It overrides concrete Claude/Cowork tool names only;
+the workflow, safety gates, and output contract in this skill remain canonical.
+<!-- OPENAI-ADAPTER:END -->
+
+
 See `commands/ai-roundup.md` for the full pipeline workflow.
 
 ## When this skill fires automatically

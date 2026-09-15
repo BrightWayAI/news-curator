@@ -3,6 +3,16 @@ name: setup
 description: Configure news-curator for your topic, audience, sources, and voice. Auto-fires on "set up news-curator", "configure roundup", "/setup-news", or any phrase about getting the news roundup pipeline ready. Also fires when the roundup pipeline reports user-context.md is missing.
 ---
 
+<!-- OPENAI-ADAPTER:START -->
+## OpenAI host binding
+
+Before acting, read `../../references/openai-portability.md`. That file translates
+host-specific tools, agents, artifacts, scheduling, connectors, and config-root
+access for ChatGPT and Codex. It overrides concrete Claude/Cowork tool names only;
+the workflow, safety gates, and output contract in this skill remain canonical.
+<!-- OPENAI-ADAPTER:END -->
+
+
 See `commands/setup-news.md` for the full interview.
 
 ## When this skill fires automatically
