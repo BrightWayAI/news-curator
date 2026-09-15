@@ -4,6 +4,11 @@ All notable changes to news-curator are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/). Versions match `plugin.json`.
 
+## [0.5.0] — `/setup-voice` ownership moves to Comms Desk (2026-09-15)
+
+### Changed
+- `commands/setup-news.md`, `skills/setup/SKILL.md`, and `README.md` updated to attribute `/setup-voice` to `comms` instead of `cortex` — voice capture itself was already read-only for this plugin, so no behavior changed, only attribution.
+
 ## [0.4.0] — Research finds, Comms Desk writes (2026-09-15)
 
 ### Changed

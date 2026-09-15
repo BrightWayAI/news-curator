@@ -1,6 +1,6 @@
 {
   "name": "research",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Research. Find recent stories, rank them for a configured audience, and stage a candidate list with traceable sources for drafting. Drafting the voice-matched post is Comms Desk's job.",
   "author": {
     "name": "BrightWay AI",
