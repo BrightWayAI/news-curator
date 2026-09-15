@@ -1,6 +1,6 @@
 {
   "name": "research",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Research. Finds and curates a weekly LinkedIn AI roundup's candidates (or any vertical news roundup). The news-curator subagent scans newsletters and the open web for the week's most important stories, ranks them for your audience, and stages your picks for drafting. Configurable per user via /setup-news. Research finds; drafting is Comms Desk's job (`/post`) — `/roundup --draft` chains into it when comms is installed.",
   "author": {
     "name": "BrightWay AI"

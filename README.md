@@ -63,8 +63,8 @@ references/
 <!-- OPENAI-SUPPORT:START -->
 ## ChatGPT and Codex
 
-Research (formerly News Curator) ships as a native OpenAI plugin as well as a Claude
-plugin. In ChatGPT desktop Local Work, enable **Research** and ask naturally or mention
+Research ships as a native OpenAI plugin as well as a Claude plugin. In
+ChatGPT desktop Local Work, enable **Research** and ask naturally or mention
 `@Research`. In Codex, use natural language or the namespaced skills exposed
 by the plugin. Claude slash-command names in this README remain workflow aliases.
 

@@ -1,4 +1,4 @@
-# OpenAI portability contract — News Curator
+# OpenAI portability contract — Research
 
 This file binds the plugin's canonical Claude-oriented examples to ChatGPT and Codex.
 It changes tool names and unavailable-host behavior, not the workflow's business logic
@@ -26,7 +26,7 @@ Identity and voice remain shared files at `<config-root>/memory/me/identity.md` 
 
 ## Invocation
 
-- ChatGPT desktop: enable the plugin in a chat, then ask naturally or use `@News Curator <request>`.
+- ChatGPT desktop: enable the plugin in a chat, then ask naturally or use `@Research <request>`.
 - Codex: ask naturally or invoke the namespaced Agent Skill shown by the client.
 - Claude slash commands remain aliases in prose. `/example` means the matching skill
   workflow; it does not require an OpenAI slash-command feature.
@@ -52,7 +52,7 @@ redirected to another store.
 
 ## Plugin-specific degradation
 
-Web search is required for fresh research. Mail/newsletter connectors are optional. If delegation is unavailable, run the curator and assembler stages inline and preserve source citations.
+Web search is required for fresh research. Mail/newsletter connectors are optional. If delegation is unavailable, run the curator stage inline and preserve source citations.
 
 Always report unavailable or skipped capabilities in the result. A degraded run must
 remain useful where possible, but it must never imply that missing data was read or an

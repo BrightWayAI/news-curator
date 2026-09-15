@@ -1,14 +1,14 @@
 {
   "name": "research",
-  "version": "0.5.0",
-  "description": "Research. Find recent stories, rank them for a configured audience, and stage a candidate list with traceable sources for drafting. Drafting the voice-matched post is Comms Desk's job.",
+  "version": "0.5.1",
+  "description": "Find recent stories, rank them for a configured audience, and stage candidates with traceable sources for drafting elsewhere.",
   "author": {
     "name": "BrightWay AI",
     "url": "https://brightwayai.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/BrightWayAI/news-curator",
-  "repository": "https://github.com/BrightWayAI/news-curator",
+  "homepage": "https://github.com/BrightWayAI/research",
+  "repository": "https://github.com/BrightWayAI/research",
   "keywords": [
     "nucleus",
     "chatgpt",
@@ -18,17 +18,17 @@
   "interface": {
     "displayName": "Research",
     "shortDescription": "Research and stage a cited weekly news roundup",
-    "longDescription": "Find recent stories, rank them for a configured audience, and stage a candidate list with traceable sources for drafting. Drafting the voice-matched post is Comms Desk's job.",
+    "longDescription": "Find recent stories, rank them for a configured audience, and stage candidates with traceable sources for drafting elsewhere.",
     "developerName": "BrightWay AI",
     "category": "Research",
     "capabilities": [
       "Read",
       "Interactive"
     ],
-    "websiteURL": "https://github.com/BrightWayAI/news-curator",
+    "websiteURL": "https://github.com/BrightWayAI/research",
     "defaultPrompt": [
       "Research this week's top stories.",
-      "Stage my weekly roundup candidates.",
+      "Stage this week's roundup candidates.",
       "Configure my roundup audience."
     ]
   }
