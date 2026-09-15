@@ -4,6 +4,13 @@ All notable changes to news-curator are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/). Versions match `plugin.json`.
 
+## [0.3.0] — Renamed to research (2026-09-15)
+
+### Changed
+- Renamed from `news-curator` to `research` (display name: Research) as part of the 2026-09-15 Nucleus plugin rename. Old plugin ID/repo name redirects; see marketplace catalog.
+- `/ai-roundup` renamed to `/roundup`; `/ai-roundup` kept as a thin deprecation alias.
+- Plugin config path updated to `<config-root>/plugins/research.user-context.md`; optional run archive path updated to `<config-root>/research/runs/`.
+
 ## [0.2.8] — host-neutral role metadata (2026-09-15)
 
 ### Changed

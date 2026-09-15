@@ -1,4 +1,4 @@
-# news-curator user context (TEMPLATE)
+# research user context (TEMPLATE)
 
 _This file is the template. Run `/setup-news` to generate your real `references/user-context.md` (which is gitignored)._
 

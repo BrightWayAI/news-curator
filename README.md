@@ -1,4 +1,6 @@
-# news-curator
+# research
+
+_Renamed from `news-curator` to `research` (display name: Research) as part of the 2026-09-15 Nucleus plugin rename._
 
 Curate and draft a weekly news roundup post — built originally for AI roundups on LinkedIn, but the topic and audience are configurable, so it works for any vertical (climate, infra, security, your industry).
 
@@ -7,7 +9,7 @@ Two subagents handle the heavy lift:
 - **news-curator** — scans the past 7 days of newsletters and the open web, ranks stories for your audience, and returns ~10 candidates with summaries and source links.
 - **post-assembler** — takes the candidates you pick + your voice rules and drafts the LinkedIn post (and a first-comment with sources).
 
-A single slash command (`/ai-roundup`) orchestrates the whole pipeline.
+A single slash command (`/roundup`, formerly `/ai-roundup`) orchestrates the whole pipeline.
 
 ## Install
 
@@ -17,7 +19,7 @@ Or directly:
 
 ```
 /plugin marketplace add BrightWayAI/news-curator
-/plugin install news-curator@news-curator
+/plugin install research@news-curator
 ```
 
 ## First-time setup
@@ -29,7 +31,7 @@ Run `/setup-news`. The setup skill walks you through a short interview and captu
 - **Voice and format** — banned phrases, tone, post length, structure preferences (e.g., "5 bullets + first-comment with links").
 - **Cadence** — when you typically post and how the candidate list should be sized.
 
-Answers are saved to `<config-root>/plugins/news-curator.user-context.md`. Both agents read this before working.
+Answers are saved to `<config-root>/plugins/research.user-context.md`. Both agents read this before working.
 
 You can re-run `/setup-news` anytime to update.
 
@@ -41,11 +43,12 @@ agents/
   news-curator.md              Subagent: scans + ranks stories
   post-assembler.md            Subagent: drafts the LinkedIn post
 commands/
-  ai-roundup.md                Slash command: full pipeline
+  roundup.md                   Slash command: full pipeline
+  ai-roundup.md                Deprecated alias for /roundup
   setup-news.md                Interview and config writer
 skills/
   setup/SKILL.md               Auto-fires on setup phrases
-  ai-roundup/SKILL.md          Auto-fires on roundup phrases
+  roundup/SKILL.md             Auto-fires on roundup phrases
 references/
   user-context.template.md     Structure (committed)
   user-context.md              Your config (gitignored, created by setup)
@@ -60,9 +63,9 @@ references/
 <!-- OPENAI-SUPPORT:START -->
 ## ChatGPT and Codex
 
-News Curator ships as a native OpenAI plugin as well as a Claude plugin. In
-ChatGPT desktop Local Work, enable **News Curator** and ask naturally or mention
-`@News Curator`. In Codex, use natural language or the namespaced skills exposed
+Research (formerly News Curator) ships as a native OpenAI plugin as well as a Claude
+plugin. In ChatGPT desktop Local Work, enable **Research** and ask naturally or mention
+`@Research`. In Codex, use natural language or the namespaced skills exposed
 by the plugin. Claude slash-command names in this README remain workflow aliases.
 
 All hosts resolve the same `<config-root>` used by Cortex, so Claude, ChatGPT desktop,

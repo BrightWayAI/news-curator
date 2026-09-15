@@ -1,7 +1,7 @@
 {
-  "name": "news-curator",
-  "version": "0.2.8",
-  "description": "Find recent stories, rank them for a configured audience, and assemble a voice-matched roundup with traceable sources.",
+  "name": "research",
+  "version": "0.3.0",
+  "description": "Research. Find recent stories, rank them for a configured audience, and assemble a voice-matched roundup with traceable sources.",
   "author": {
     "name": "BrightWay AI",
     "url": "https://brightwayai.com"
@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "News Curator",
+    "displayName": "Research",
     "shortDescription": "Research and draft a cited weekly news roundup",
     "longDescription": "Find recent stories, rank them for a configured audience, and assemble a voice-matched roundup with traceable sources.",
     "developerName": "BrightWay AI",

@@ -2,17 +2,17 @@
 
 ## What this plugin does with your data
 
-News Curator scans newsletters and the open web to produce a weekly roundup post draft. Read-only against the public web; writes drafts inline plus an optional local archive.
+Research (formerly News Curator) scans newsletters and the open web to produce a weekly roundup post draft. Read-only against the public web; writes drafts inline plus an optional local archive.
 
 **Reads:**
 - **Web** (`WebSearch` + web fetch) — preferred newsletter sites (per your `/setup-news` configuration), the open web for additional coverage.
-- **Plugin settings** — `<config-root>/plugins/news-curator.user-context.md` (topic, audience, sources, voice/format).
+- **Plugin settings** — `<config-root>/plugins/research.user-context.md` (topic, audience, sources, voice/format).
 - **Shared private profile** — `<config-root>/memory/me/identity.md` and `voice.md` (read-only).
 
 **Writes:**
 - **Drafts** — produced inline in conversation by the `post-assembler` subagent for your review. The post + first-comment + alternate hook.
-- **Plugin settings** — `<config-root>/plugins/news-curator.user-context.md` (after `/setup-news`).
-- **Optional local archive** — `<config-root>/news-curator/runs/[date].md` if you accept the offer at end of `/ai-roundup`.
+- **Plugin settings** — `<config-root>/plugins/research.user-context.md` (after `/setup-news`).
+- **Optional local archive** — `<config-root>/research/runs/[date].md` if you accept the offer at end of `/ai-roundup`.
 
 **Does not:**
 - **Post to LinkedIn or any social platform automatically.** Drafts are review-then-paste-by-user.
@@ -23,7 +23,7 @@ News Curator scans newsletters and the open web to produce a weekly roundup post
 ## Where data lives
 
 - Immutable plugin references inside the installed plugin directory.
-- Optional run archives at `<config-root>/news-curator/runs/[date].md`.
+- Optional run archives at `<config-root>/research/runs/[date].md`.
 - Shared identity/voice (read-only) under `<config-root>/memory/me/`.
 
 ## What gets sent off your machine

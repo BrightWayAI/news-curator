@@ -1,5 +1,5 @@
 ---
-description: Configure news-curator for your topic, audience, sources, and voice via a short interview. Writes results to <config-root>/plugins/news-curator.user-context.md so news-curator and post-assembler can do real work. Re-run anytime to update.
+description: Configure news-curator for your topic, audience, sources, and voice via a short interview. Writes results to <config-root>/plugins/research.user-context.md so news-curator and post-assembler can do real work. Re-run anytime to update.
 ---
 
 # /setup-news
@@ -36,13 +36,13 @@ Read `<config-root>/memory/me/identity.md` (cortex's `/setup-identity`) and `<co
 - **Voice populated** → pre-fill Section 3 (Voice and format) of this interview. Skip those questions; just confirm.
 - **Missing** → offer to run `/setup-identity` and/or `/setup-voice` first, or proceed inline.
 
-For the rest of this document, **`<config-root>`** refers to the resolved path. This plugin's config file lives at **`<config-root>/plugins/news-curator.user-context.md`**.
+For the rest of this document, **`<config-root>`** refers to the resolved path. This plugin's config file lives at **`<config-root>/plugins/research.user-context.md`**.
 
 ---
 
 ## Step 1 — Check for existing config
 
-Read `<config-root>/plugins/news-curator.user-context.md` if it exists.
+Read `<config-root>/plugins/research.user-context.md` if it exists.
 
 - If populated → ask: "You've already configured news-curator. Update specific sections, or start over?"
   - "Update [section]" → jump to that section.
@@ -89,7 +89,7 @@ One section at a time. Confirm before moving to the next.
 
 ## Step 3 — Write the config
 
-Populate `<config-root>/plugins/news-curator.user-context.md` with answers, structured for fast agent reads:
+Populate `<config-root>/plugins/research.user-context.md` with answers, structured for fast agent reads:
 
 ```markdown
 # news-curator user context
@@ -130,7 +130,7 @@ _Last updated: [date]_
 ## Step 4 — Confirm and offer next step
 
 Summarize what was saved (one short paragraph) and offer:
-> "Try `/ai-roundup` to run the full pipeline — scan, pick, draft. Should take 3–5 minutes."
+> "Try `/roundup` to run the full pipeline — scan, pick, draft. Should take 3–5 minutes."
 
 ---
 
