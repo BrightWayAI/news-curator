@@ -27,7 +27,7 @@ Then:
 
 ### C — Read shared identity and voice
 
-Read `<config-root>/identity.md` (cortex's `/setup-identity`) and `<config-root>/voice.md` (cortex's `/setup-voice`). The post-assembler subagent in this plugin reads voice directly from this file at draft time.
+Read `<config-root>/memory/me/identity.md` (cortex's `/setup-identity`) and `<config-root>/memory/me/voice.md` (cortex's `/setup-voice`). The post-assembler subagent in this plugin reads voice directly from this file at draft time.
 
 - **Identity populated** → use as background context (post-assembler addresses the user correctly).
 - **Voice populated** → pre-fill Section 3 (Voice and format) of this interview. Skip those questions; just confirm.

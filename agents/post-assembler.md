@@ -28,7 +28,7 @@ The parent skill passes:
 
 ## Workflow
 
-1. **Read voice rules** — first check `<config-root>/voice.md` (the shared voice file populated by cortex's `/setup-voice`). If it exists, prefer those rules — they're the user's canonical voice across every drafting plugin. Then read this plugin's `user-context.md` for plugin-specific overrides (post format, hashtag preferences, audience).
+1. **Read voice rules** — first check `<config-root>/memory/me/voice.md` (the shared voice file populated by cortex's `/setup-voice`). If it exists, prefer those rules — they're the user's canonical voice across every drafting plugin. Then read this plugin's `user-context.md` for plugin-specific overrides (post format, hashtag preferences, audience).
 
    Voice rules to extract (from shared voice.md if present, else from user-context.md):
    - **Voice descriptors** — three-words + "NOT this"
